@@ -13,7 +13,7 @@ You will be able to:
 * Calculate and interpret precision and recall and evaluation metrics for classification
 * Calculate and interpret accuracy and f1-score as evaluation metrics for classification
 
-### Getting Started
+## Getting Started
 
 For this lab, you're going to read in a DataFrame containing various predictions from different models, as well as the ground-truth labels for the dataset that each model was making predictions on. You'll also write various functions to help you easily calculate important evaluation metrics such as **_Precision_**, **_Recall_**, **_Accuracy_**, and **_F1-Score_**.
 
@@ -109,7 +109,7 @@ labels = df['Labels']
 
 Good! Now, let's get started by building a confusion matrix!
 
-### Confusion Matrix
+## Confusion Matrix
 
 In the cell below, complete the `conf_matrix` function.  This function should:
 
@@ -154,7 +154,7 @@ model1_confusion_matrix
 
 
 
-    {'TP': 6168, 'TN': 2654, 'FP': 346, 'FN': 832}
+    {'FN': 832, 'FP': 346, 'TN': 2654, 'TP': 6168}
 
 
 
@@ -168,7 +168,7 @@ model2_confusion_matrix
 
 
 
-    {'TP': 3914, 'TN': 1659, 'FP': 1341, 'FN': 3086}
+    {'FN': 3086, 'FP': 1341, 'TN': 1659, 'TP': 3914}
 
 
 
@@ -182,11 +182,11 @@ model3_confusion_matrix
 
 
 
-    {'TP': 5505, 'TN': 2319, 'FP': 681, 'FN': 1495}
+    {'FN': 1495, 'FP': 681, 'TN': 2319, 'TP': 5505}
 
 
 
-### Checking Our Work with sklearn
+## Checking Our Work with sklearn
 
 To check our work, let's make use the the `confusion_matrix()` function found in `sklearn.metrics` to create some confusion matrices and make sure that sklearn's results match up with our own.
 
@@ -204,7 +204,7 @@ model1_sk_cm
 
 
     array([[2654,  346],
-           [ 832, 6168]], dtype=int64)
+           [ 832, 6168]])
 
 
 
@@ -218,7 +218,7 @@ model2_sk_cm
 
 
     array([[1659, 1341],
-           [3086, 3914]], dtype=int64)
+           [3086, 3914]])
 
 
 
@@ -232,11 +232,11 @@ model3_sk_cm
 
 
     array([[2319,  681],
-           [1495, 5505]], dtype=int64)
+           [1495, 5505]])
 
 
 
-### (Optional) Visualizing Confusion Matrices
+## (Optional) Visualizing Confusion Matrices
 
 In the cells below, use the visualization function shown in the **_Confusion Matrices_** lesson to visualize each of the confusion matrices created above. 
 
@@ -279,7 +279,7 @@ show_cf(labels, model1_preds, model_name='Model 1')
 ```
 
 
-![png](output_16_0.png)
+![png](index_files/index_16_0.png)
 
 
 
@@ -288,7 +288,7 @@ show_cf(labels, model2_preds, model_name='Model 2')
 ```
 
 
-![png](output_17_0.png)
+![png](index_files/index_17_0.png)
 
 
 
@@ -297,28 +297,28 @@ show_cf(labels, model3_preds, model_name='Model 3')
 ```
 
 
-![png](output_18_0.png)
+![png](index_files/index_18_0.png)
 
 
-### Calculating Evaluation Metrics
+## Calculating Evaluation Metrics
 
 Now, we'll use our newly created confusion matrices to calculate some evaluation metrics. 
 
 As a reminder, here are the equations for each evaluation metric we'll be calculating in this lab:
 
-#### Precision
+### Precision
 
 $$Precision = \frac{\text{Number of True Positives}}{\text{Number of Predicted Positives}}$$
 
-#### Recall
+### Recall
 
 $$Recall = \frac{\text{Number of True Positives}}{\text{Number of Actual Total Positives}}$$
 
-#### Accuracy
+### Accuracy
 
 $$Accuracy = \frac{\text{Number of True Positives + True Negatives}}{\text{Total Observations}}$$
 
-#### F1-Score
+### F1-Score
 
 $$F1-Score = 2\ \frac{Precision\ x\ Recall}{Precision + Recall}$$
 
@@ -345,7 +345,7 @@ print(precision(model3_confusion_matrix)) # Expected Output: 0.8899127061105723
     0.94688363524716
     0.744814462416746
     0.8899127061105723
-    
+
 
 
 ```python
@@ -360,7 +360,7 @@ print(recall(model3_confusion_matrix)) # Expected Output: 0.7864285714285715
     0.8811428571428571
     0.5591428571428572
     0.7864285714285715
-    
+
 
 
 ```python
@@ -375,7 +375,7 @@ print(accuracy(model3_confusion_matrix)) # Expected Output: 0.7824
     0.8822
     0.5573
     0.7824
-    
+
 
 
 ```python
@@ -394,11 +394,11 @@ print(f1(model3_confusion_matrix)) # Expected Output: 0.8349764902168968
     0.9128311380790292
     0.6387596899224806
     0.8349764902168968
-    
+
 
 Great Job! Let's check our work with sklearn. 
 
-### Calculating Metrics with sklearn
+## Calculating Metrics with sklearn
 
 Each of the metrics we calculated above are also available inside the `sklearn.metrics` module.  
 
@@ -444,9 +444,9 @@ for ind, i in enumerate(preds):
     Recall: 0.7864285714285715
     Accuracy: 0.7824
     F1-Score: 0.8349764902168968
-    
 
-### Classification Reports
+
+## Classification Reports
 
 Remember that table that you filled out above? It's called a **_Classification Report_**, and it turns out that sklearn can even create one of those for you! This classification report even breaks down performance by individual class predictions for your model. 
 
@@ -491,8 +491,8 @@ for ind, i in enumerate(preds):
     
     avg / total       0.81      0.78      0.79     10000
     
-    
 
-# Conclusion
+
+## Summary
 
 In this lab, we manually calculated various evaluation metrics to help us evaluate classifier performance, and we also made use of preexisting tools inside of sklearn for the same purpose. 
